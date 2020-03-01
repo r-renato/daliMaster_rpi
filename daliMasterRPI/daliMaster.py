@@ -1,5 +1,4 @@
-import dali
-import defines
+from daliMasterRPI import defines
 import smbus
 import time
 
@@ -93,7 +92,7 @@ class daliMaster:
 
         try:
             # print("waiting for bus ready")
-            return self.__waitFor(timeout, 0, defines.LW14_STATUS_BUSY,  defines.LW14_STATUS_BUS_FAULT)
+            return self.__waitFor(timeout, 0, defines.LW14_STATUS_BUSY, defines.LW14_STATUS_BUS_FAULT)
         except IOError as e :
             print ("I/O error({0}): {1}".format(e.errno, e.strerror))
             return defines.ERROR
@@ -106,7 +105,7 @@ class daliMaster:
         '''
 
         try:
-            return self.__waitFor(timeout, 1, defines.LW14_STATUS_VALID,  defines.LW14_STATUS_1BYTE)
+            return self.__waitFor(timeout, 1, defines.LW14_STATUS_VALID, defines.LW14_STATUS_1BYTE)
         except IOError as e :
             print ("I/O error({0}): {1}".format(e.errno, e.strerror))
             return defines.ERROR
@@ -119,7 +118,7 @@ class daliMaster:
         '''
 
         try:
-            return self.__waitFor(timeout, 1, defines.LW14_STATUS_VALID,  defines.LW14_STATUS_2BYTE)
+            return self.__waitFor(timeout, 1, defines.LW14_STATUS_VALID, defines.LW14_STATUS_2BYTE)
         except IOError as e :
             print ("I/O error({0}): {1}".format(e.errno, e.strerror))
             return defines.ERROR
